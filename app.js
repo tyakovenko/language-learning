@@ -182,6 +182,9 @@ function openLesson(dayNum) {
     const day = course.days.find(d => d.day === dayNum);
     if (!day) return;
 
+    // Push history state so the browser back button returns to dashboard
+    history.pushState({ view: 'lesson', day: dayNum, lang: currentLang }, '', `?lang=${currentLang}&day=${dayNum}`);
+
     showView('lesson');
     document.title = `Day ${dayNum}: ${day.title} — LinguaPath`;
 
@@ -401,6 +404,34 @@ async function switchLanguage(lang) {
 langSelect.addEventListener('change', e => switchLanguage(e.target.value));
 backBtn.addEventListener('click', renderDashboard);
 navHomeBtn.addEventListener('click', e => { e.preventDefault(); renderDashboard(); });
+
+// ---- Browser Back Button ----
+// Seed the initial history entry so back from lesson returns here
+history.replaceState({ view: 'dashboard', lang: currentLang }, '', `?lang=${currentLang}`);
+
+window.addEventListener('popstate', e => {
+    const state = e.state;
+    if (!state || state.view === 'dashboard') {
+        renderDashboard();
+    } else if (state.view === 'lesson' && state.day) {
+        // re-open lesson without pushing another state
+        currentDay = state.day;
+        const day = course && course.days.find(d => d.day === state.day);
+        if (day) {
+            showView('lesson');
+            document.title = `Day ${state.day}: ${day.title} — LinguaPath`;
+            lessonDayBadge.textContent = `Day ${state.day}`;
+            lessonTitle.textContent = day.title;
+            lessonFunfact.textContent = day.funFact || '';
+            updateCompleteBtnState();
+            renderGrammar(day.grammar || []);
+            renderPractice(day.practice || []);
+            renderResources(day.resources || {});
+        } else {
+            renderDashboard();
+        }
+    }
+});
 
 // ---- Helpers ----
 function normalise(str) {
