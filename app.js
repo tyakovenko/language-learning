@@ -48,6 +48,14 @@ function markDayComplete(lang, day) {
     }
 }
 
+function unmarkDayComplete(lang, day) {
+    const p = getProgress(lang);
+    if (p[day]) {
+        delete p[day];
+        saveProgress(lang, p);
+    }
+}
+
 function countCompleted(lang) {
     return Object.keys(getProgress(lang)).length;
 }
@@ -181,14 +189,7 @@ function openLesson(dayNum) {
     lessonTitle.textContent = day.title;
     lessonFunfact.textContent = day.funFact || '';
 
-    // Complete button state
-    if (isDayComplete(currentLang, dayNum)) {
-        completeBtn.textContent = '✓  Completed';
-        completeBtn.classList.add('is-done');
-    } else {
-        completeBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Mark Complete';
-        completeBtn.classList.remove('is-done');
-    }
+    updateCompleteBtnState();
 
     renderGrammar(day.grammar || []);
     renderPractice(day.practice || []);
@@ -336,12 +337,28 @@ function renderResources(resources) {
     }
 }
 
-// ---- Mark Complete ----
+// ---- Mark / Unmark Complete ----
+function updateCompleteBtnState() {
+    if (!currentDay) return;
+    const done = isDayComplete(currentLang, currentDay);
+    if (done) {
+        completeBtn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Undo Complete';
+        completeBtn.classList.add('is-done');
+    } else {
+        completeBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Mark Complete';
+        completeBtn.classList.remove('is-done');
+    }
+}
+
 completeBtn.addEventListener('click', () => {
     if (!currentDay) return;
-    markDayComplete(currentLang, currentDay);
-    completeBtn.innerHTML = '✓  Completed';
-    completeBtn.classList.add('is-done');
+    const done = isDayComplete(currentLang, currentDay);
+    if (done) {
+        unmarkDayComplete(currentLang, currentDay);
+    } else {
+        markDayComplete(currentLang, currentDay);
+    }
+    updateCompleteBtnState();
     updateProgressBar();
     updateFunFact();
 });
