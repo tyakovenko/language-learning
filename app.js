@@ -89,10 +89,31 @@ function getLangFromURL() {
     return params.get('lang') || null;
 }
 
-function setLangInURL(lang) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-    window.history.replaceState({}, '', url.toString());
+function setURL(params = {}, push = false) {
+    try {
+        const url = new URL(window.location.href);
+        // Clear existing params to start fresh
+        const newKeys = Object.keys(params);
+        if (newKeys.length > 0) {
+            // Keep only what we want
+            const currentParams = new URLSearchParams();
+            newKeys.forEach(k => {
+                if (params[k]) currentParams.set(k, params[k]);
+            });
+            url.search = currentParams.toString();
+        } else {
+            url.search = '';
+        }
+
+        const state = { ...params, view: params.day ? 'lesson' : 'dashboard' };
+        if (push) {
+            window.history.pushState(state, '', url.toString());
+        } else {
+            window.history.replaceState(state, '', url.toString());
+        }
+    } catch (e) {
+        console.error('History API error:', e);
+    }
 }
 
 // ---- Load Language Course ----
@@ -144,9 +165,14 @@ function updateFunFact() {
 }
 
 // ---- Render Dashboard ----
-function renderDashboard() {
+function renderDashboard(isPopState = false) {
     showView('dashboard');
-    document.title = `LinguaPath — 30-Day ${course.language} Plan`;
+    if (!isPopState) {
+        setURL({ lang: currentLang }, false); // replace current state
+    }
+    if (course) {
+        document.title = `LinguaPath — 30-Day ${course.language} Plan`;
+    }
 
     const completed = countCompleted(currentLang);
     const total = course.days.length;
@@ -177,13 +203,17 @@ function renderDashboard() {
 }
 
 // ---- Render Lesson ----
-function openLesson(dayNum) {
+function openLesson(dayNum, isPopState = false) {
     currentDay = dayNum;
-    const day = course.days.find(d => d.day === dayNum);
-    if (!day) return;
+    const day = course && course.days.find(d => d.day === dayNum);
+    if (!day) {
+        renderDashboard();
+        return;
+    }
 
-    // Push history state so the browser back button returns to dashboard
-    history.pushState({ view: 'lesson', day: dayNum, lang: currentLang }, '', `?lang=${currentLang}&day=${dayNum}`);
+    if (!isPopState) {
+        setURL({ lang: currentLang, day: dayNum }, true); // push new state
+    }
 
     showView('lesson');
     document.title = `Day ${dayNum}: ${day.title} — LinguaPath`;
@@ -402,34 +432,16 @@ async function switchLanguage(lang) {
 }
 
 langSelect.addEventListener('change', e => switchLanguage(e.target.value));
-backBtn.addEventListener('click', renderDashboard);
+backBtn.addEventListener('click', () => renderDashboard());
 navHomeBtn.addEventListener('click', e => { e.preventDefault(); renderDashboard(); });
 
-// ---- Browser Back Button ----
-// Seed the initial history entry so back from lesson returns here
-history.replaceState({ view: 'dashboard', lang: currentLang }, '', `?lang=${currentLang}`);
-
+// ---- Browser Back/Forward Navigation ----
 window.addEventListener('popstate', e => {
     const state = e.state;
     if (!state || state.view === 'dashboard') {
-        renderDashboard();
+        renderDashboard(true);
     } else if (state.view === 'lesson' && state.day) {
-        // re-open lesson without pushing another state
-        currentDay = state.day;
-        const day = course && course.days.find(d => d.day === state.day);
-        if (day) {
-            showView('lesson');
-            document.title = `Day ${state.day}: ${day.title} — LinguaPath`;
-            lessonDayBadge.textContent = `Day ${state.day}`;
-            lessonTitle.textContent = day.title;
-            lessonFunfact.textContent = day.funFact || '';
-            updateCompleteBtnState();
-            renderGrammar(day.grammar || []);
-            renderPractice(day.practice || []);
-            renderResources(day.resources || {});
-        } else {
-            renderDashboard();
-        }
+        openLesson(state.day, true);
     }
 });
 
@@ -506,7 +518,10 @@ function showError(msg) {
 
 // ---- Boot ----
 (async () => {
-    const urlLang = getLangFromURL();
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang');
+    const urlDay = params.get('day');
+
     if (urlLang) {
         currentLang = urlLang;
         langSelect.value = urlLang;
@@ -516,7 +531,13 @@ function showError(msg) {
 
     try {
         course = await loadCourse(currentLang);
-        renderDashboard();
+        if (urlDay) {
+            openLesson(parseInt(urlDay), true);
+            // Sync URL and state for initial lesson view
+            setURL({ lang: currentLang, day: urlDay }, false);
+        } else {
+            renderDashboard();
+        }
     } catch (e) {
         console.error(e);
         showError(`Could not load content for "${currentLang}". Make sure content/${currentLang}.js exists.`);
