@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30-Day Language Learning</title>
+  <meta name="description" content="A beautiful, interactive 30-day language learning study plan. Learn Spanish, German, French and more at your own pace." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark sticky-top" id="main-navbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#" id="nav-home-btn">
+        <span class="brand-icon">🌍</span>
+        <span class="brand-text">LinguaPath</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-3">
+        <!-- Language Selector -->
+        <div class="lang-selector-wrapper d-flex align-items-center gap-2">
+          <i class="bi bi-translate text-warning"></i>
+          <select class="form-select form-select-sm lang-select" id="lang-select">
+            <option value="spanish">🇪🇸 Spanish</option>
+            <option value="german">🇩🇪 German</option>
+            <option value="french">🇫🇷 French</option>
+          </select>
+        </div>
+
+        <!-- Back button (hidden on dashboard) -->
+        <button class="btn btn-sm btn-outline-warning d-none" id="back-btn">
+          <i class="bi bi-arrow-left me-1"></i>Dashboard
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROGRESS BAR (below navbar) -->
+  <div id="progress-bar-container">
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progress-bar-fill"></div>
+    </div>
+    <div class="progress-label" id="progress-label">0 / 30 days complete</div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container-fluid px-3 px-md-4 py-4" id="main-content">
+
+    <!-- ================================ -->
+    <!-- DASHBOARD VIEW                   -->
+    <!-- ================================ -->
+    <div id="view-dashboard">
+
+      <!-- Hero -->
+      <div class="dashboard-hero text-center mb-5">
+        <div class="hero-flag" id="hero-flag"></div>
+        <h1 class="hero-title" id="hero-title">Your 30-Day Journey</h1>
+        <p class="hero-subtitle" id="hero-subtitle">Click any day to begin. All days are open from Day 1.</p>
+
+        <!-- Streak -->
+        <div class="streak-badge d-inline-flex align-items-center gap-2 mt-3">
+          <i class="bi bi-fire"></i>
+          <span id="streak-count">0</span>
+          <span>day streak</span>
+        </div>
+      </div>
+
+      <!-- Day Cards Grid -->
+      <div class="row g-3 g-md-4" id="day-cards-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- ================================ -->
+    <!-- LESSON VIEW                      -->
+    <!-- ================================ -->
+    <div id="view-lesson" class="d-none">
+
+      <!-- Lesson Header -->
+      <div class="lesson-header mb-4">
+        <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
+          <div>
+            <span class="lesson-day-badge" id="lesson-day-badge">Day 1</span>
+            <h2 class="lesson-title mt-2" id="lesson-title"></h2>
+            <p class="lesson-funfact" id="lesson-funfact"></p>
+          </div>
+          <button class="btn btn-complete" id="complete-btn">
+            <i class="bi bi-check-circle me-2"></i>Mark Complete
+          </button>
+        </div>
+      </div>
+
+      <!-- Grammar Section -->
+      <section class="lesson-section mb-4" id="grammar-section">
+        <h4 class="section-heading"><i class="bi bi-book me-2"></i>Grammar Concepts</h4>
+        <div id="grammar-cards">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Practice Section -->
+      <section class="lesson-section mb-4" id="practice-section">
+        <h4 class="section-heading"><i class="bi bi-pencil-square me-2"></i>Practice Problems</h4>
+        <div id="practice-problems">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Resources Section -->
+      <section class="lesson-section mb-4" id="resources-section">
+        <h4 class="section-heading"><i class="bi bi-collection-play me-2"></i>Study Materials</h4>
+        <div class="row g-3" id="resource-links">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- App -->
+  <script src="app.js"></script>
+</body>
+</html>
