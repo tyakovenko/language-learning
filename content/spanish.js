@@ -3,7 +3,7 @@
 // Fill in each day following the structure below.
 // ================================================
 
-const COURSE = {
+window.COURSE = {
     language: 'Spanish',
     flag: '🇪🇸',
     days: [
