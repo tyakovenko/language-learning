@@ -140,28 +140,27 @@ body {
   background: var(--forest);
 }
 
-/* Back button — inside lesson view */
+/* Back button — prominent, right of lesson header */
 .btn-back-lesson {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: none;
-  border: 1.5px solid var(--border);
+  gap: 0.45rem;
+  background: var(--forest);
+  border: none;
   border-radius: var(--radius-sm);
-  color: var(--text-muted);
+  color: #f5f0e8;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  padding: 0.35rem 0.85rem;
+  padding: 0.55rem 1.2rem;
   cursor: pointer;
-  margin-bottom: 1.1rem;
-  transition: all var(--transition);
+  transition: background var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
 }
 
 .btn-back-lesson:hover {
-  border-color: var(--teal);
-  color: var(--teal-dim);
-  background: rgba(42, 181, 165, 0.06);
+  background: #2a5230;
+  box-shadow: 0 3px 12px rgba(27, 58, 32, 0.25);
 }
 
 /* =============================================
@@ -584,26 +583,27 @@ body {
   flex-shrink: 0;
 }
 
-/* Mark Complete button */
+/* Mark Complete — compact, lives under the lesson title */
 .btn-complete {
+  display: inline-flex;
+  align-items: center;
   background: var(--teal);
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 99px;
   color: white;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.86rem;
-  font-weight: 600;
-  padding: 0.55rem 1.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.95rem;
   cursor: pointer;
-  letter-spacing: 0.01em;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.03em;
+  transition: background var(--transition), box-shadow var(--transition);
   white-space: nowrap;
 }
 
 .btn-complete:hover {
   background: var(--teal-dim);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(42, 181, 165, 0.25);
+  box-shadow: 0 3px 10px rgba(42, 181, 165, 0.25);
 }
 
 .btn-complete.is-done {
