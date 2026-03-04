@@ -200,6 +200,23 @@ function renderDashboard(isPopState = false) {
         });
         dayCardsGrid.appendChild(col);
     });
+
+    // Add "Useful Resources" tile
+    const resourceCol = document.createElement('div');
+    resourceCol.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
+    resourceCol.innerHTML = `
+      <div class="day-card special-card" role="button" tabindex="0" aria-label="Useful Resources">
+        <div class="day-number">Extra</div>
+        <div class="day-card-title">Useful Resources</div>
+        <p class="day-card-fact">Explore more with Google Learning Labs</p>
+      </div>`;
+    resourceCol.querySelector('.day-card').addEventListener('click', () => {
+        window.open('https://labs.google/lll/en', '_blank');
+    });
+    resourceCol.querySelector('.day-card').addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') window.open('https://labs.google/lll/en', '_blank');
+    });
+    dayCardsGrid.appendChild(resourceCol);
 }
 
 // ---- Render Lesson ----

@@ -682,3 +682,21 @@ body {
     display: none;
   }
 }
+/* Useful Resources Card */
+.day-card.special-card {
+  border-color: var(--orange-lt);
+  background: linear-gradient(145deg, var(--bg-card), rgba(225, 140, 110, 0.08));
+}
+.day-card.special-card:hover {
+  border-color: var(--orange);
+}
+.day-card.special-card .day-number {
+  color: var(--orange) !important;
+  opacity: 0.9;
+}
+.day-card.special-card .day-card-title {
+  color: var(--text-mid);
+}
+.day-card.special-card .day-card-fact {
+  color: var(--text-muted);
+}
