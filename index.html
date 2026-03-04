@@ -4,17 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>30-Day Language Learning</title>
-  <meta name="description"
-    content="A beautiful, interactive 30-day language learning study plan. Learn Spanish, German, French and more at your own pace." />
+  <title>LinguaPath</title>
+  <meta name="description" content="A beautiful, interactive 30-day language learning study plan." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 
@@ -23,7 +19,38 @@
 
 <body>
 
-  <!-- TOP STRIP: Progress bar + Today's fun fact -->
+  <!-- NAVBAR: brand | streak | lang select | back -->
+  <nav class="navbar navbar-dark sticky-top" id="main-navbar">
+    <div class="container-fluid px-3 px-md-4">
+
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#" id="nav-home-btn">
+        <span class="brand-icon">🌍</span>
+        <span class="brand-text">LinguaPath</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <!-- Streak badge (now in navbar) -->
+        <span class="nav-streak">
+          <i class="bi bi-fire"></i>
+          <span id="streak-count">0</span>
+          <span>day streak</span>
+        </span>
+
+        <i class="bi bi-translate" style="color:rgba(245,240,232,0.5);font-size:0.85rem;"></i>
+        <select class="form-select form-select-sm lang-select" id="lang-select">
+          <option value="spanish">🇪🇸 Spanish</option>
+          <option value="german">🇩🇪 German</option>
+          <option value="french">🇫🇷 French</option>
+        </select>
+
+        <button class="btn-back d-none" id="back-btn">
+          <i class="bi bi-arrow-left me-1"></i>Back
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROGRESS STRIP: bar + fun fact (now below navbar) -->
   <div id="top-strip">
     <div id="strip-progress-row">
       <span class="strip-label">Progress</span>
@@ -34,34 +61,9 @@
     </div>
     <div id="strip-funfact-row">
       <span class="strip-fact-icon">💡</span>
-      <span id="strip-funfact-text"><strong>Fun fact:</strong> Start learning to unlock today's fact!</span>
+      <span id="strip-funfact-text"><strong>Tip:</strong> Click any day card to start learning!</span>
     </div>
   </div>
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-dark sticky-top" id="main-navbar">
-    <div class="container-fluid px-3 px-md-4">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#" id="nav-home-btn">
-        <span class="brand-icon">🌍</span>
-        <span>
-          <span class="brand-text">LinguaPath</span>
-          <span class="brand-sub">30-day plans</span>
-        </span>
-      </a>
-
-      <div class="d-flex align-items-center gap-2">
-        <i class="bi bi-translate" style="color:var(--teal);font-size:0.9rem;"></i>
-        <select class="form-select form-select-sm lang-select" id="lang-select">
-          <option value="spanish">🇪🇸 Spanish</option>
-          <option value="german">🇩🇪 German</option>
-          <option value="french">🇫🇷 French</option>
-        </select>
-        <button class="btn btn-sm btn-outline-warning d-none ms-1" id="back-btn">
-          <i class="bi bi-arrow-left me-1"></i>Back
-        </button>
-      </div>
-    </div>
-  </nav>
 
   <!-- MAIN CONTENT -->
   <main class="container-fluid px-3 px-md-4 py-4" id="main-content">
@@ -70,22 +72,7 @@
     <!-- DASHBOARD VIEW                   -->
     <!-- ================================ -->
     <div id="view-dashboard">
-
-      <!-- Hero -->
-      <div class="dashboard-hero text-center mb-4">
-        <div class="hero-top-row">
-          <span class="hero-flag" id="hero-flag"></span>
-          <h1 class="hero-title" id="hero-title">Your 30-Day Journey</h1>
-        </div>
-        <p class="hero-subtitle" id="hero-subtitle">Click any day to begin. All days are open from Day 1.</p>
-        <div class="streak-badge d-inline-flex align-items-center gap-2 mt-2">
-          <i class="bi bi-fire"></i>
-          <span id="streak-count">0</span>
-          <span>day streak</span>
-        </div>
-      </div>
-
-      <!-- Day Cards Grid -->
+      <div class="cards-section-label">30-Day Plan</div>
       <div class="row g-3" id="day-cards-grid">
         <!-- Populated by JS -->
       </div>
@@ -109,17 +96,17 @@
         </div>
       </div>
 
-      <section class="lesson-section mb-3" id="grammar-section">
+      <section class="lesson-section mb-3">
         <h4 class="section-heading"><i class="bi bi-book"></i>Grammar Concepts</h4>
         <div id="grammar-cards"></div>
       </section>
 
-      <section class="lesson-section mb-3" id="practice-section">
+      <section class="lesson-section mb-3">
         <h4 class="section-heading"><i class="bi bi-pencil-square"></i>Practice Problems</h4>
         <div id="practice-problems"></div>
       </section>
 
-      <section class="lesson-section mb-3" id="resources-section">
+      <section class="lesson-section mb-3">
         <h4 class="section-heading"><i class="bi bi-collection-play"></i>Study Materials</h4>
         <div class="row g-3" id="resource-links"></div>
       </section>

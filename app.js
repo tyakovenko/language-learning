@@ -17,9 +17,6 @@ const navHomeBtn = document.getElementById('nav-home-btn');
 const progressFill = document.getElementById('progress-bar-fill');
 const progressLabel = document.getElementById('progress-label');
 const streakCount = document.getElementById('streak-count');
-const heroFlag = document.getElementById('hero-flag');
-const heroTitle = document.getElementById('hero-title');
-const heroSubtitle = document.getElementById('hero-subtitle');
 const lessonDayBadge = document.getElementById('lesson-day-badge');
 const lessonTitle = document.getElementById('lesson-title');
 const lessonFunfact = document.getElementById('lesson-funfact');
@@ -143,10 +140,6 @@ function updateFunFact() {
 function renderDashboard() {
     showView('dashboard');
     document.title = `LinguaPath — 30-Day ${course.language} Plan`;
-
-    heroFlag.textContent = course.flag || '🌍';
-    heroTitle.textContent = `Your 30-Day ${course.language} Journey`;
-    heroSubtitle.textContent = 'Click any day to begin. All days are open from Day 1.';
 
     const completed = countCompleted(currentLang);
     const total = course.days.length;
