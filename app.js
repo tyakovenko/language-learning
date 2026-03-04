@@ -16,7 +16,6 @@ const backBtn = document.getElementById('back-btn');
 const navHomeBtn = document.getElementById('nav-home-btn');
 const progressFill = document.getElementById('progress-bar-fill');
 const progressLabel = document.getElementById('progress-label');
-const streakCount = document.getElementById('streak-count');
 const lessonDayBadge = document.getElementById('lesson-day-badge');
 const lessonTitle = document.getElementById('lesson-title');
 const lessonFunfact = document.getElementById('lesson-funfact');
@@ -145,7 +144,6 @@ function renderDashboard() {
     const total = course.days.length;
     progressFill.style.width = `${Math.round((completed / total) * 100)}%`;
     progressLabel.textContent = `${completed} / ${total}`;
-    streakCount.textContent = calcStreak(currentLang);
     updateFunFact();
 
     dayCardsGrid.innerHTML = '';
@@ -353,7 +351,6 @@ function updateProgressBar() {
     const total = course ? course.days.length : 30;
     progressFill.style.width = `${Math.round((completed / total) * 100)}%`;
     progressLabel.textContent = `${completed} / ${total}`;
-    streakCount.textContent = calcStreak(currentLang);
 }
 
 // ---- View Switcher ----
