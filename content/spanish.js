@@ -109,8 +109,8 @@ window.COURSE = {
                 { type: 'multiple-choice', prompt: 'Что значит «tirando» как ответ на «¿Qué tal?»?', choices: ['Отлично!', 'Нормально, терпимо', 'Ужасно'], answer: 'Нормально, терпимо', hint: 'Очень типичный испанский ответ — без лишнего энтузиазма' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Greetings in Spain', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-1-greetings-in-spanish/' }],
-                reading: [{ label: 'ThoughtCo — Common Spanish Greetings', url: 'https://www.thoughtco.com/common-spanish-greetings-3079993' }],
+                listening: [{ label: 'SpanishPod101 — Greetings in Spain', url: 'https://www.youtube.com/watch?v=9QXSWhAb1CE' }],
+                reading: [{ label: 'ThoughtCo — Common Spanish Greetings', url: 'https://www.bbc.co.uk/languages/spanish/cia/vocab/greetings.shtml' }],
                 video: [{ label: 'YouTube — Spanish greetings used in Spain', url: 'https://www.youtube.com/watch?v=g1i-CjMFwLg' }]
             }
         },
@@ -148,8 +148,8 @@ window.COURSE = {
                 { type: 'translate', prompt: 'Переведите: «один пляж» (неопределённый артикль)', answer: 'una playa', hint: '«Playa» — женский род, неопределённый: una' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Noun Gender in Spanish', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-8-talking-about-places-in-spanish/' }],
-                reading: [{ label: 'ThoughtCo — Род существительных в испанском', url: 'https://www.thoughtco.com/masculine-and-feminine-nouns-3078141' }],
+                listening: [{ label: 'SpanishPod101 — Noun Gender in Spanish', url: 'https://studyspanish.com/grammar/lessons/gender' }],
+                reading: [{ label: 'ThoughtCo — Род существительных в испанском', url: 'https://studyspanish.com/grammar/lessons/gender' }],
                 video: [{ label: 'YouTube — Español con Juan: Мужской и женский род', url: 'https://www.youtube.com/watch?v=9QXSWhAb1CE' }]
             }
         },
@@ -194,8 +194,8 @@ window.COURSE = {
                 { type: 'multiple-choice', prompt: 'Как спросить группу друзей «Как вы?» (форма для Испании)?', choices: ['¿Cómo están ustedes?', '¿Cómo estáis?', '¿Cómo estás?'], answer: '¿Cómo estáis?', hint: '«Estáis» — форма глагола для «vosotros»' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Spanish Pronouns in Spain', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-4-talking-about-yourself-in-spanish/' }],
-                reading: [{ label: 'SpanishDict — Личные местоимения в испанском', url: 'https://www.spanishdict.com/guide/spanish-subject-pronouns' }],
+                listening: [{ label: 'SpanishPod101 — Spanish Pronouns in Spain', url: 'https://studyspanish.com/grammar/lessons/subpro' }],
+                reading: [{ label: 'SpanishDict — Личные местоимения в испанском', url: 'https://studyspanish.com/grammar/lessons/subpro' }],
                 video: [{ label: 'YouTube — Vosotros vs Ustedes: Spain vs Latin America', url: 'https://www.youtube.com/watch?v=yh_xFG2JrPY' }]
             }
         },
@@ -238,8 +238,8 @@ window.COURSE = {
                 { type: 'fill-in', prompt: 'Сейчас три часа = ___ las tres', answer: 'Son', hint: 'Время всегда с SER' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Verb SER explained', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-5-what-are-you-doing-in-spain/' }],
-                reading: [{ label: 'SpanishDict — Глагол SER: полный гид', url: 'https://www.spanishdict.com/guide/ser-in-spanish' }],
+                listening: [{ label: 'SpanishPod101 — Verb SER explained', url: 'https://www.youtube.com/watch?v=sUZ7d__3AP0' }],
+                reading: [{ label: 'SpanishDict — Глагол SER: полный гид', url: 'https://www.spanishdict.com/conjugate/ser' }],
                 video: [{ label: 'YouTube — Dreaming Spanish: SER для начинающих', url: 'https://www.youtube.com/watch?v=sUZ7d__3AP0' }]
             }
         },
@@ -284,8 +284,8 @@ window.COURSE = {
                 { type: 'translate', prompt: 'Переведите: Вы (vosotros) довольны?', answer: '¿Estáis contentos?', hint: 'ESTAR + форма «vosotros» + прилагательное мн.ч.' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Verb ESTAR', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-6-what-do-you-do-in-spain/' }],
-                reading: [{ label: 'SpanishDict — Глагол ESTAR: полный гид', url: 'https://www.spanishdict.com/guide/estar-in-spanish' }],
+                listening: [{ label: 'SpanishPod101 — Verb ESTAR', url: 'https://www.youtube.com/watch?v=_6J9GPwGqlA' }],
+                reading: [{ label: 'SpanishDict — Глагол ESTAR: полный гид', url: 'https://www.spanishdict.com/conjugate/estar' }],
                 video: [{ label: 'YouTube — Español con Juan: ESTAR', url: 'https://www.youtube.com/watch?v=_6J9GPwGqlA' }]
             }
         },
@@ -320,7 +320,7 @@ window.COURSE = {
             ],
             resources: {
                 listening: [{ label: 'Notes in Spanish — SER vs ESTAR explained naturally', url: 'https://www.notesinspanish.com/' }],
-                reading: [{ label: 'ThoughtCo — SER vs ESTAR: Complete Guide', url: 'https://www.thoughtco.com/ser-vs-estar-3078116' }],
+                reading: [{ label: 'ThoughtCo — SER vs ESTAR: Complete Guide', url: 'https://studyspanish.com/grammar/lessons/serest' }],
                 video: [{ label: 'YouTube — Dreaming Spanish: SER vs ESTAR', url: 'https://www.youtube.com/watch?v=oRBSoDTfDOQ' }]
             }
         },
@@ -365,8 +365,8 @@ window.COURSE = {
                 { type: 'translate', prompt: 'Переведите: Нам (носотрос) нужно заплатить', answer: 'Tenemos que pagar', hint: 'tener que + инфинитив + форма «nosotros»' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Verb TENER', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-9/' }],
-                reading: [{ label: 'SpanishDict — Глагол TENER и его выражения', url: 'https://www.spanishdict.com/guide/tener-in-spanish' }],
+                listening: [{ label: 'SpanishPod101 — Verb TENER', url: 'https://www.youtube.com/watch?v=K4Q3YsHcNaI' }],
+                reading: [{ label: 'SpanishDict — Глагол TENER и его выражения', url: 'https://www.spanishdict.com/conjugate/tener' }],
                 video: [{ label: 'YouTube — Expressions with TENER', url: 'https://www.youtube.com/watch?v=rFWBVSAq6MM' }]
             }
         },
@@ -411,8 +411,8 @@ window.COURSE = {
                 { type: 'translate', prompt: 'Переведите: Ты собираешься учить испанский?', answer: '¿Vas a estudiar español?', hint: 'IR (tú) + a + инфинитив' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Verb IR and directions', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-10/' }],
-                reading: [{ label: 'SpanishDict — Глагол IR: все значения', url: 'https://www.spanishdict.com/guide/ir-in-spanish' }],
+                listening: [{ label: 'SpanishPod101 — Verb IR and directions', url: 'https://www.youtube.com/watch?v=L5OB2WoHnag' }],
+                reading: [{ label: 'SpanishDict — Глагол IR: все значения', url: 'https://www.spanishdict.com/conjugate/ir' }],
                 video: [{ label: 'YouTube — Verb IR: going places + near future', url: 'https://www.youtube.com/watch?v=Yx3MrHHMhNI' }]
             }
         },
@@ -482,7 +482,7 @@ window.COURSE = {
             ],
             resources: {
                 listening: [{ label: 'SpanishPod101 — Spanish Adjectives', url: 'https://www.spanishpod101.com/' }],
-                reading: [{ label: 'ThoughtCo — Spanish Adjective Agreement', url: 'https://www.thoughtco.com/adjective-agreement-in-spanish-3078168' }],
+                reading: [{ label: 'ThoughtCo — Spanish Adjective Agreement', url: 'https://studyspanish.com/grammar/lessons/adj' }],
                 video: [{ label: 'YouTube — Spanish adjectives: placement and agreement', url: 'https://www.youtube.com/watch?v=M6aPxu5zEFg' }]
             }
         },
@@ -527,7 +527,7 @@ window.COURSE = {
                 { type: 'translate', prompt: 'Переведите: Ты покупаешь рыбу на рынке?', answer: '¿Compras el pescado en el mercado?', hint: 'comprar → tú → compras' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — AR verbs conjugation', url: 'https://www.spanishpod101.com/lesson/absolute-beginner-12/' }],
+                listening: [{ label: 'SpanishPod101 — AR verbs conjugation', url: 'https://www.youtube.com/watch?v=Y1g6fy18kIY' }],
                 reading: [{ label: 'StudySpanish.com — AR verb conjugation', url: 'https://studyspanish.com/verbs/lessons/pres1' }],
                 video: [{ label: 'YouTube — Spanish AR verbs: full conjugation', url: 'https://www.youtube.com/watch?v=Y1g6fy18kIY' }]
             }
@@ -870,7 +870,7 @@ window.COURSE = {
             ],
             resources: {
                 listening: [{ label: 'SpanishPod101 — Reflexive Verbs', url: 'https://www.spanishpod101.com/' }],
-                reading: [{ label: 'SpanishDict — Reflexive verbs guide', url: 'https://www.spanishdict.com/guide/reflexive-verbs-in-spanish' }],
+                reading: [{ label: 'SpanishDict — Reflexive verbs guide', url: 'https://studyspanish.com/verbs/lessons/reflex' }],
                 video: [{ label: 'YouTube — Reflexive verbs in Spanish daily routine', url: 'https://www.youtube.com/watch?v=Yw1nIWuEoSU' }]
             }
         },
@@ -1003,7 +1003,7 @@ window.COURSE = {
             ],
             resources: {
                 listening: [{ label: 'SpanishPod101 — Adverbs of frequency', url: 'https://www.spanishpod101.com/' }],
-                reading: [{ label: 'ThoughtCo — Spanish frequency adverbs', url: 'https://www.thoughtco.com/adverbs-of-frequency-in-spanish-3078085' }],
+                reading: [{ label: 'ThoughtCo — Spanish frequency adverbs', url: 'https://studyspanish.com/grammar/lessons/freq' }],
                 video: [{ label: 'YouTube — Spanish frequency adverbs explained', url: 'https://www.youtube.com/watch?v=gzOF7FPHdkE' }]
             }
         },
@@ -1096,7 +1096,7 @@ window.COURSE = {
             ],
             resources: {
                 listening: [{ label: 'SpanishPod101 — Near future in Spanish', url: 'https://www.spanishpod101.com/' }],
-                reading: [{ label: 'SpanishDict — IR + a + infinitive', url: 'https://www.spanishdict.com/guide/ir-a-infinitive-in-spanish' }],
+                reading: [{ label: 'SpanishDict — IR + a + infinitive', url: 'https://studyspanish.com/verbs/lessons/future' }],
                 video: [{ label: 'YouTube — Spanish near future: voy a...', url: 'https://www.youtube.com/watch?v=mTEhcL3TYZQ' }]
             }
         },
@@ -1290,7 +1290,7 @@ window.COURSE = {
             ],
             resources: {
                 listening: [{ label: 'Notes in Spanish — Real conversations in Spain', url: 'https://www.notesinspanish.com/beginner/' }],
-                reading: [{ label: 'FluentU — Spanish phrases for restaurants', url: 'https://www.fluentu.com/blog/spanish/spanish-restaurant-phrases/' }],
+                reading: [{ label: 'FluentU — Spanish phrases for restaurants', url: 'https://www.clozemaster.com/blog/spanish-phrases-for-restaurants/' }],
                 video: [{ label: 'YouTube — Spanish conversation practice for Málaga', url: 'https://www.youtube.com/watch?v=B6jVkJCiLF8' }]
             }
         },
