@@ -208,7 +208,7 @@ function renderGrammar(concepts) {
         div.className = 'grammar-card';
         div.innerHTML = `
       <div class="grammar-concept">${escHtml(c.concept)}</div>
-      <p class="grammar-explanation">${escHtml(c.explanation)}</p>`;
+      <div class="grammar-explanation">${renderMd(c.explanation)}</div>`;
         grammarCards.appendChild(div);
     });
 }
@@ -412,6 +412,57 @@ function escHtml(str) {
     const d = document.createElement('div');
     d.textContent = str || '';
     return d.innerHTML;
+}
+
+// Lightweight markdown → HTML for grammar explanations
+// Supports: | tables |, **bold**, *italic*, `code`, \n line breaks
+function renderMd(raw) {
+    if (!raw) return '';
+
+    function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    function inline(s) {
+        return esc(s)
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>');
+    }
+
+    const lines = raw.split('\n');
+    let html = '';
+    let tableLines = [];
+
+    function flushTable() {
+        if (!tableLines.length) return;
+        // Separate header from data rows (skip separator lines like |---|)
+        const nonSep = tableLines.filter(l => !/^\|[\s\-|:]+\|$/.test(l.trim()));
+        if (nonSep.length < 1) { tableLines = []; return; }
+
+        const cols = r => r.split('|').slice(1, -1);
+        html += '<table class="md-table"><thead><tr>';
+        cols(nonSep[0]).forEach(c => { html += `<th>${inline(c.trim())}</th>`; });
+        html += '</tr></thead><tbody>';
+        nonSep.slice(1).forEach(row => {
+            html += '<tr>';
+            cols(row).forEach(c => { html += `<td>${inline(c.trim())}</td>`; });
+            html += '</tr>';
+        });
+        html += '</tbody></table>';
+        tableLines = [];
+    }
+
+    lines.forEach(line => {
+        if (line.trim().startsWith('|')) {
+            tableLines.push(line);
+        } else {
+            flushTable();
+            html += line.trim() === '' ? '<br>' : inline(line) + '<br>';
+        }
+    });
+    flushTable();
+
+    return html.replace(/(<br>\s*){3,}/g, '<br><br>').replace(/^<br>/, '').replace(/<br>$/, '');
 }
 
 function showError(msg) {

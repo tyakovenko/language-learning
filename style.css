@@ -431,6 +431,32 @@ body {
   margin: 0;
 }
 
+/* Markdown tables rendered inside grammar explanations */
+.md-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.6rem 0;
+  font-size: 0.82rem;
+}
+
+.md-table th {
+  background: var(--forest);
+  color: #f5f0e8;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.4rem 0.65rem;
+}
+
+.md-table td {
+  padding: 0.35rem 0.65rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-mid);
+}
+
+.md-table tr:nth-child(even) td {
+  background: #f5f0e820;
+}
+
 /* Practice */
 .practice-item {
   background: #fafaf8;
