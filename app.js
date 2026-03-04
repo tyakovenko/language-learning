@@ -27,6 +27,7 @@ const grammarCards = document.getElementById('grammar-cards');
 const practiceProblems = document.getElementById('practice-problems');
 const resourceLinks = document.getElementById('resource-links');
 const completeBtn = document.getElementById('complete-btn');
+const stripFunFact = document.getElementById('strip-funfact-text');
 
 // ---- Progress Storage ----
 function getProgress(lang) {
@@ -110,6 +111,34 @@ async function loadCourse(lang) {
     });
 }
 
+// ---- Fun Fact of the Day (top strip) ----
+function updateFunFact() {
+    if (!course || !stripFunFact) return;
+    const progress = getProgress(currentLang);
+    const completedNums = Object.keys(progress).map(Number).sort((a, b) => b - a);
+
+    let fact = null;
+    // Show the most recently completed day's fact
+    for (const num of completedNums) {
+        const day = course.days.find(d => d.day === num);
+        if (day && day.funFact) { fact = { day: num, text: day.funFact }; break; }
+    }
+    // Fallback: pick a random day that has a fact
+    if (!fact) {
+        const withFacts = course.days.filter(d => d.funFact);
+        if (withFacts.length) {
+            const pick = withFacts[Math.floor(Math.random() * withFacts.length)];
+            fact = { day: pick.day, text: pick.funFact };
+        }
+    }
+
+    if (fact) {
+        stripFunFact.innerHTML = `<strong>Day ${fact.day}:</strong> ${escHtml(fact.text)}`;
+    } else {
+        stripFunFact.innerHTML = '<strong>Tip:</strong> Click any day card to start learning!';
+    }
+}
+
 // ---- Render Dashboard ----
 function renderDashboard() {
     showView('dashboard');
@@ -122,20 +151,22 @@ function renderDashboard() {
     const completed = countCompleted(currentLang);
     const total = course.days.length;
     progressFill.style.width = `${Math.round((completed / total) * 100)}%`;
-    progressLabel.textContent = `${completed} / ${total} days complete`;
+    progressLabel.textContent = `${completed} / ${total}`;
     streakCount.textContent = calcStreak(currentLang);
+    updateFunFact();
 
     dayCardsGrid.innerHTML = '';
 
     course.days.forEach(day => {
         const done = isDayComplete(currentLang, day.day);
+        const isEmpty = !day.title;
         const col = document.createElement('div');
         col.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
         col.innerHTML = `
-      <div class="day-card ${done ? 'completed' : ''}" data-day="${day.day}" role="button" tabindex="0"
-           aria-label="Day ${day.day}: ${day.title}">
-        <div class="day-number">Day ${day.day}</div>
-        <div class="day-card-title">${escHtml(day.title)}</div>
+      <div class="day-card ${done ? 'completed' : ''} ${isEmpty ? 'empty' : ''}" data-day="${day.day}" role="button" tabindex="0"
+           aria-label="Day ${day.day}: ${day.title || 'Coming soon'}">
+        <div class="day-number">Day ${String(day.day).padStart(2, '0')}</div>
+        <div class="day-card-title">${escHtml(day.title || 'Coming soon…')}</div>
         <p class="day-card-fact">${escHtml(day.funFact || '')}</p>
       </div>`;
         col.querySelector('.day-card').addEventListener('click', () => openLesson(day.day));
@@ -321,13 +352,14 @@ completeBtn.addEventListener('click', () => {
     completeBtn.innerHTML = '✓  Completed';
     completeBtn.classList.add('is-done');
     updateProgressBar();
+    updateFunFact();
 });
 
 function updateProgressBar() {
     const completed = countCompleted(currentLang);
     const total = course ? course.days.length : 30;
     progressFill.style.width = `${Math.round((completed / total) * 100)}%`;
-    progressLabel.textContent = `${completed} / ${total} days complete`;
+    progressLabel.textContent = `${completed} / ${total}`;
     streakCount.textContent = calcStreak(currentLang);
 }
 
@@ -381,7 +413,7 @@ function showError(msg) {
     viewDashboard.classList.remove('d-none');
     viewLesson.classList.add('d-none');
     dayCardsGrid.innerHTML = `<div class="col-12 text-center py-5">
-    <p style="color:var(--coral);font-size:1.1rem;">${msg}</p>
+    <p style="color:var(--terra-lt);font-size:1.1rem;">${msg}</p>
   </div>`;
 }
 
