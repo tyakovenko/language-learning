@@ -359,13 +359,11 @@ function showView(which) {
         viewDashboard.classList.remove('d-none');
         viewDashboard.classList.add('view-fade');
         viewLesson.classList.add('d-none');
-        backBtn.classList.add('d-none');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
         viewLesson.classList.remove('d-none');
         viewLesson.classList.add('view-fade');
         viewDashboard.classList.add('d-none');
-        backBtn.classList.remove('d-none');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }

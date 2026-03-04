@@ -140,22 +140,28 @@ body {
   background: var(--forest);
 }
 
-.btn-back {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+/* Back button — inside lesson view */
+.btn-back-lesson {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  color: #f5f0e8;
+  color: var(--text-muted);
   font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.3rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
   cursor: pointer;
-  transition: background var(--transition);
-  white-space: nowrap;
+  margin-bottom: 1.1rem;
+  transition: all var(--transition);
 }
 
-.btn-back:hover {
-  background: rgba(255, 255, 255, 0.15);
+.btn-back-lesson:hover {
+  border-color: var(--teal);
+  color: var(--teal-dim);
+  background: rgba(42, 181, 165, 0.06);
 }
 
 /* =============================================
@@ -647,10 +653,6 @@ body {
   }
 
   #strip-funfact-row {
-    display: none;
-  }
-
-  .nav-streak {
     display: none;
   }
 }

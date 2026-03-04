@@ -19,15 +19,13 @@
 
 <body>
 
-  <!-- NAVBAR: brand | streak | lang select | back -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-dark sticky-top" id="main-navbar">
     <div class="container-fluid px-3 px-md-4">
-
       <a class="navbar-brand d-flex align-items-center gap-2" href="#" id="nav-home-btn">
         <span class="brand-icon">🌍</span>
         <span class="brand-text">LinguaPath</span>
       </a>
-
       <div class="d-flex align-items-center gap-2 ms-auto">
         <i class="bi bi-translate" style="color:rgba(245,240,232,0.5);font-size:0.85rem;"></i>
         <select class="form-select form-select-sm lang-select" id="lang-select">
@@ -35,15 +33,11 @@
           <option value="german">🇩🇪 German</option>
           <option value="french">🇫🇷 French</option>
         </select>
-
-        <button class="btn-back d-none" id="back-btn">
-          <i class="bi bi-arrow-left me-1"></i>Back
-        </button>
       </div>
     </div>
   </nav>
 
-  <!-- PROGRESS STRIP: bar + fun fact (now below navbar) -->
+  <!-- PROGRESS STRIP -->
   <div id="top-strip">
     <div id="strip-progress-row">
       <span class="strip-label">Progress</span>
@@ -61,19 +55,20 @@
   <!-- MAIN CONTENT -->
   <main class="container-fluid px-3 px-md-4 py-4" id="main-content">
 
-    <!-- ================================ -->
-    <!-- DASHBOARD VIEW                   -->
-    <!-- ================================ -->
+    <!-- DASHBOARD VIEW -->
     <div id="view-dashboard">
       <div class="row g-3" id="day-cards-grid">
         <!-- Populated by JS -->
       </div>
     </div>
 
-    <!-- ================================ -->
-    <!-- LESSON VIEW                      -->
-    <!-- ================================ -->
+    <!-- LESSON VIEW -->
     <div id="view-lesson" class="d-none">
+
+      <!-- Back link — prominent, top of content -->
+      <button class="btn-back-lesson" id="back-btn">
+        <i class="bi bi-arrow-left"></i> All Days
+      </button>
 
       <div class="lesson-header mb-4">
         <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
