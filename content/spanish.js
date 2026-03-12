@@ -109,7 +109,7 @@ window.COURSE = {
                 { type: 'multiple-choice', prompt: 'Что значит «tirando» как ответ на «¿Qué tal?»?', choices: ['Отлично!', 'Нормально, терпимо', 'Ужасно'], answer: 'Нормально, терпимо', hint: 'Очень типичный испанский ответ — без лишнего энтузиазма' }
             ],
             resources: {
-                listening: [{ label: 'SpanishPod101 — Greetings in Spain', url: 'https://spanishnow.org/listening-practice-common-spanish-greetings/ }],
+                listening: [{ label: 'SpanishPod101 — Greetings in Spain', url: 'https://spanishnow.org/listening-practice-common-spanish-greetings/' }],
                 reading: [{ label: 'ThoughtCo — Common Spanish Greetings', url: 'https://www.thoughtco.com/greetings-spanish-3079498' }],
                 video: [{ label: 'YouTube — Spanish greetings used in Spain', url: 'https://www.youtube.com/watch?v=CqN1ENPfaeQ' }]
             }
